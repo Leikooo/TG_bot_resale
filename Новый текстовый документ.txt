@@ -1,8 +1,0 @@
-asyncio
-nest_asyncio
-requests
-aiogram
-python-dateutil
-bs4
-selenium==4.7.2
-webdriver-manager
