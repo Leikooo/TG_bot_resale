@@ -220,7 +220,7 @@ async def open_category_for_create_position(call: CallbackQuery, state: FSMConte
     send_msg = f"<b>Purchase of item:</b>\n" \
                 "➖➖➖➖➖➖➖➖➖➖➖➖\n" \
                 f"<b>📜 Platform:</b> <code>{get_podcategory[2]}</code>\n" \
-                f"<b>📜 Receiving method:</b> <code>{get_category[2]}</code>\n" \
+                f"<b>📜 Receiving:</b> <code>{get_category[2]}</code>\n" \
                 f"<b>📜 Item:</b> <code>{get_position[2]}</code>\n" \
                 f"<b>💵 Price:</b> <code>{get_position[3]}$</code>\n\n" \
                 f"<b>Description:</b>\n" \
