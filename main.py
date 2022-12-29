@@ -18,7 +18,7 @@ async def on_startup(dp):
     await on_startup_notify(dp)
     asyncio.create_task(pushup())
     asyncio.create_task(update_last_profit())
-    print("The bot is running")
+    print("---------------The bot is running---------------")
 
 def re_lang(user_id, language):
     with sqlite3.connect(path_to_db) as db:
