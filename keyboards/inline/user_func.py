@@ -21,7 +21,7 @@ def confirm_buy_items(amount_pay, user_id):
     confirm_buy_item_keyboard = InlineKeyboardMarkup()
     yes_buy_kb = InlineKeyboardButton(text="✅ Confirm",
                                     callback_data=f"xbuy_item:{amount_pay}")
-    not_buy_kb = InlineKeyboardButton("❌ Cancel ❌❌",
+    not_buy_kb = InlineKeyboardButton("❌ Cancel",
                                     callback_data=f"not_buy_items")
     confirm_buy_item_keyboard.add(yes_buy_kb, not_buy_kb)
     return confirm_buy_item_keyboard
