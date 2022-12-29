@@ -137,14 +137,18 @@ async def open_category_for_buy_item(call: CallbackQuery, state: FSMContext):
             await call.answer(f"❕ Товары во вкладке {get_category[0][2]} отсутствуют.")
 
 # Вернутсья к предыдущей категории при покупке
-@dp.callback_query_handler(text_startswith="back_buy_item_to_category", state="*")
+@dp.callback_query_handler(text_startswith="back_buy:", state="*")
 async def back_category_for_buy_item(call: CallbackQuery, state: FSMContext):
-    if lang(call.from_user.id)=='Eng':
+    category_id=int(call.data.split(":")[1])
+    get_category = get_categoryx("*", category_id=category_id)
+    get_podcatygory = get_podcategoryx("*", category_id=get_category[0][3])
+    if get_podcatygory[3]=='🔉 Social media':
         await call.message.edit_text("<b>Select an item:</b>",
-                                    reply_markup=buy_item_open_podcategory_ap(0))
+                                    reply_markup=buy_item_open_podcategory_ap(0,'🔉 Social media'))
     else:
-        await call.message.edit_text("<b>Выберите нужный вам товар:</b>",
-                                    reply_markup=buy_item_open_podcategory_ap(0))
+        await call.message.edit_text("<b>Select an item:</b>",
+                                    reply_markup=buy_item_open_podcategory_ap(0, '⚔️ Games'))
+
 
 # Следующая страница категорий при покупке
 @dp.callback_query_handler(text_startswith="buy_category_nextp", state="*")

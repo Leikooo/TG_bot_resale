@@ -18,16 +18,16 @@ def category_open_edit_ap(remover):
             keyboard.add(InlineKeyboardButton(f"{get_categories[a][2]}",
                                               callback_data=f"edit_category_here:{get_categories[a][1]}:{remover}"))
         x += 1
-    if len(get_categories) <= 10:
+    if len(get_categories) <= 5:
         pass
-    elif len(get_categories) > count_page and remover < 10:
+    elif len(get_categories) > count_page and remover < 5:
         nomer_kb = InlineKeyboardButton("🔸 1 🔸", callback_data="...")
         next_kb = InlineKeyboardButton("➡ Next", callback_data=f"edit_catategory_nextp:{remover + count_page}")
-        keyboard.add(next_kb)
+        keyboard.add(nomer_kb,next_kb)
     elif remover + count_page >= len(get_categories):
         prev_kb = InlineKeyboardButton("⬅ Back", callback_data=f"edit_catategory_prevp:{remover - count_page}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
-        keyboard.add(prev_kb)
+        keyboard.add(prev_kb, nomer_kb)
     else:
         next_kb = InlineKeyboardButton("➡ Next", callback_data=f"edit_catategory_nextp:{remover + count_page}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
@@ -49,12 +49,12 @@ def category_edit_next_page_ap(remover):
     if remover + count_page >= len(get_categories):
         prev_kb = InlineKeyboardButton("⬅ Back", callback_data=f"edit_catategory_prevp:{remover - count_page}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
-        keyboard.add(prev_kb)
+        keyboard.add(prev_kb, nomer_kb, next_kb)
     else:
         next_kb = InlineKeyboardButton("➡ Next", callback_data=f"edit_catategory_nextp:{remover + count_page}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
         prev_kb = InlineKeyboardButton("⬅ Back", callback_data=f"edit_catategory_prevp:{remover - count_page}")
-        keyboard.add(prev_kb, next_kb)
+        keyboard.add(prev_kb, nomer_kb, next_kb)
 
     return keyboard
 
@@ -72,12 +72,12 @@ def category_edit_prev_page_ap(remover):
     if remover <= 0:
         nomer_kb = InlineKeyboardButton("🔸 1 🔸", callback_data="...")
         next_kb = InlineKeyboardButton("➡ Next", callback_data=f"edit_catategory_nextp:{remover + count_page}")
-        keyboard.add(next_kb)
+        keyboard.add(prev_kb, nomer_kb, next_kb)
     else:
         next_kb = InlineKeyboardButton("➡ Next", callback_data=f"edit_catategory_nextp:{remover + count_page}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
         prev_kb = InlineKeyboardButton("⬅ Back", callback_data=f"edit_catategory_prevp:{remover - count_page}")
-        keyboard.add(prev_kb, next_kb)
+        keyboard.add(prev_kb, nomer_kb, next_kb)
     return keyboard
 
 
@@ -107,7 +107,7 @@ def position_open_create_ap(remover):
     elif len(get_categories) > count_page:
         nomer_kb = InlineKeyboardButton("🔸 1 🔸", callback_data="...")
         next_kb = InlineKeyboardButton("➡ Next", callback_data=f"create_position_nextp:{remover + count_page}")
-        keyboard.add(next_kb)
+        keyboard.add(nomer_kb,next_kb)
     return keyboard
 
 
@@ -124,12 +124,12 @@ def position_create_next_page_ap(remover):
     if remover + count_page >= len(get_categories):
         prev_kb = InlineKeyboardButton("⬅ Back", callback_data=f"create_position_prevp:{remover - count_page}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
-        keyboard.add(prev_kb)
+        keyboard.add(prev_kb, nomer_kb)
     else:
         next_kb = InlineKeyboardButton("➡ Next", callback_data=f"create_position_nextp:{remover + count_page}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
         prev_kb = InlineKeyboardButton("⬅ Back", callback_data=f"create_position_prevp:{remover - count_page}")
-        keyboard.add(prev_kb, next_kb)
+        keyboard.add(prev_kb,nomer_kb,  next_kb)
     return keyboard
 
 
@@ -146,12 +146,12 @@ def position_create_previous_page_ap(remover):
     if remover <= 0:
         nomer_kb = InlineKeyboardButton("🔸 1 🔸", callback_data="...")
         next_kb = InlineKeyboardButton("➡ Next", callback_data=f"create_position_nextp:{remover + count_page}")
-        keyboard.add(next_kb)
+        keyboard.add(nomer_kb, next_kb)
     else:
         next_kb = InlineKeyboardButton("➡ Next", callback_data=f"create_position_nextp:{remover + count_page}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
         prev_kb = InlineKeyboardButton("⬅ Back", callback_data=f"create_position_prevp:{remover - count_page}")
-        keyboard.add(prev_kb, next_kb)
+        keyboard.add(prev_kb,nomer_kb, next_kb)
     return keyboard
 
 
@@ -168,25 +168,25 @@ def position_open_edit_category_ap(remover):
             keyboard.add(InlineKeyboardButton(f"{get_categories[a][2]}",
                                               callback_data=f"position_edit_category:{get_categories[a][1]}"))
         x += 1
-    if len(get_categories) <= 10:
+    if len(get_categories) <= 5:
         pass
-    elif len(get_categories) > count_page and remover < 10:
+    elif len(get_categories) > count_page and remover < 5:
         nomer_kb = InlineKeyboardButton("🔸 1 🔸", callback_data="...")
         next_kb = InlineKeyboardButton("➡ Next",
                                        callback_data=f"edit_position_category_nextp:{remover + count_page}")
-        keyboard.add(next_kb)
+        keyboard.add(nomer_kb, prev_kb)
     elif remover + count_page >= len(get_categories):
         prev_kb = InlineKeyboardButton("⬅ Back",
                                        callback_data=f"edit_position_category_prevp:{remover - count_page}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
-        keyboard.add(prev_kb)
+        keyboard.add(nomer_kb, prev_kb)
     else:
         next_kb = InlineKeyboardButton("➡ Next",
                                        callback_data=f"edit_position_category_nextp:{remover + count_page}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
         prev_kb = InlineKeyboardButton("⬅ Back",
                                        callback_data=f"edit_position_category_prevp:{remover - count_page}")
-        keyboard.add(prev_kb, next_kb)
+        keyboard.add(prev_kb,nomer_kb, next_kb)
     return keyboard
 
 
@@ -204,14 +204,14 @@ def position_edit_next_page_category_ap(remover):
         prev_kb = InlineKeyboardButton("⬅ Back",
                                        callback_data=f"edit_position_category_prevp:{remover - count_page}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
-        keyboard.add(prev_kb)
+        keyboard.add(prev_kb, nomer_kb)
     else:
         next_kb = InlineKeyboardButton("➡ Next",
                                        callback_data=f"edit_position_category_nextp:{remover + count_page}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
         prev_kb = InlineKeyboardButton("⬅ Back",
                                        callback_data=f"edit_position_category_prevp:{remover - count_page}")
-        keyboard.add(prev_kb, next_kb)
+        keyboard.add(prev_kb,nomer_kb, next_kb)
     return keyboard
 
 
@@ -229,14 +229,14 @@ def position_edit_previous_page_category_ap(remover):
         nomer_kb = InlineKeyboardButton("🔸 1 🔸", callback_data="...")
         next_kb = InlineKeyboardButton("➡ Next",
                                        callback_data=f"edit_position_category_nextp:{remover + count_page}")
-        keyboard.add(next_kb)
+        keyboard.add(nomer_kb,next_kb)
     else:
         next_kb = InlineKeyboardButton("➡ Next",
                                        callback_data=f"edit_position_category_nextp:{remover + count_page}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
         prev_kb = InlineKeyboardButton("⬅ Back",
                                        callback_data=f"edit_position_category_prevp:{remover - count_page}")
-        keyboard.add(prev_kb, next_kb)
+        keyboard.add(prev_kb, nomer_kb, next_kb)
     return keyboard
 
 
@@ -258,19 +258,19 @@ def position_open_edit_ap(remover, category_id):
         nomer_kb = InlineKeyboardButton("🔸 1 🔸", callback_data="...")
         next_kb = InlineKeyboardButton("➡ Next",
                                        callback_data=f"edit_position_nextp:{remover + count_page}:{category_id}")
-        keyboard.add(next_kb)
+        keyboard.add(nomer_kb,next_kb)
     elif remover + count_page >= len(get_positions):
         prev_kb = InlineKeyboardButton("⬅ Back",
                                        callback_data=f"edit_position_prevp:{remover - count_page}:{category_id}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
-        keyboard.add(prev_kb)
+        keyboard.add(prev_kb, nomer_kb)
     else:
         next_kb = InlineKeyboardButton("➡ Next",
                                        callback_data=f"edit_position_nextp:{remover + count_page}:{category_id}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
         prev_kb = InlineKeyboardButton("⬅ Back",
                                        callback_data=f"edit_position_prevp:{remover - count_page}:{category_id}")
-        keyboard.add(prev_kb, next_kb)
+        keyboard.add(prev_kb, nomer_kb, next_kb)
     keyboard.add(InlineKeyboardButton("⬅ Back",
                                       callback_data=f"back_to_category"))
     return keyboard
@@ -291,14 +291,14 @@ def position_edit_next_page_ap(remover, category_id):
         prev_kb = InlineKeyboardButton("⬅ Back",
                                        callback_data=f"edit_position_prevp:{remover - count_page}:{category_id}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
-        keyboard.add(prev_kb)
+        keyboard.add(prev_kb, nomer_kb)
     else:
         next_kb = InlineKeyboardButton("➡ Next",
                                        callback_data=f"edit_position_nextp:{remover + count_page}:{category_id}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
         prev_kb = InlineKeyboardButton("⬅ Back",
                                        callback_data=f"edit_position_prevp:{remover - count_page}:{category_id}")
-        keyboard.add(prev_kb, next_kb)
+        keyboard.add(prev_kb, nomer_kb, next_kb)
     keyboard.add(InlineKeyboardButton("⬅ Back",
                                       callback_data=f"back_to_category"))
     return keyboard
@@ -319,14 +319,14 @@ def position_edit_previous_page_ap(remover, category_id):
         nomer_kb = InlineKeyboardButton("🔸 1 🔸", callback_data="...")
         next_kb = InlineKeyboardButton("➡ Next",
                                        callback_data=f"edit_position_nextp:{remover + count_page}:{category_id}")
-        keyboard.add(next_kb)
+        keyboard.add(nomer_kb,next_kb)
     else:
         next_kb = InlineKeyboardButton("➡ Next",
                                        callback_data=f"edit_position_nextp:{remover + count_page}:{category_id}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
         prev_kb = InlineKeyboardButton("⬅ Back",
                                        callback_data=f"edit_position_prevp:{remover - count_page}:{category_id}")
-        keyboard.add(prev_kb, next_kb)
+        keyboard.add(prev_kb, nomer_kb, next_kb)
     keyboard.add(InlineKeyboardButton("⬅ Back",
                                       callback_data=f"back_to_category"))
     return keyboard
@@ -344,25 +344,25 @@ def item_open_add_category_ap(remover):
             keyboard.add(InlineKeyboardButton(f"{get_categories[a][2]}",
                                               callback_data=f"item_add_category:{get_categories[a][1]}"))
         x += 1
-    if len(get_categories) <= 10:
+    if len(get_categories) <= 5:
         pass
-    elif len(get_categories) > count_page and remover < 10:
+    elif len(get_categories) > count_page and remover < 5:
         nomer_kb = InlineKeyboardButton("🔸 1 🔸", callback_data="...")
         next_kb = InlineKeyboardButton("➡ Next",
                                        callback_data=f"add_item_category_nextp:{remover + count_page}")
-        keyboard.add(next_kb)
+        keyboard.add(nomer_kb,next_kb)
     elif remover + count_page >= len(get_categories):
         prev_kb = InlineKeyboardButton("⬅ Back",
                                        callback_data=f"add_item_category_prevp:{remover - count_page}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
-        keyboard.add(prev_kb)
+        keyboard.add(prev_kb, nomer_kb)
     else:
         next_kb = InlineKeyboardButton("➡ Next",
                                        callback_data=f"add_item_category_nextp:{remover + count_page}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
         prev_kb = InlineKeyboardButton("⬅ Back",
                                        callback_data=f"add_item_category_prevp:{remover - count_page}")
-        keyboard.add(prev_kb, next_kb)
+        keyboard.add(prev_kb, nomer_kb, next_kb)
     return keyboard
 
 
@@ -380,14 +380,14 @@ def item_add_next_page_category_ap(remover):
         prev_kb = InlineKeyboardButton("⬅ Back",
                                        callback_data=f"add_item_category_prevp:{remover - count_page}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
-        keyboard.add(prev_kb)
+        keyboard.add(prev_kb, nomer_kb)
     else:
         next_kb = InlineKeyboardButton("➡ Next",
                                        callback_data=f"add_item_category_nextp:{remover + count_page}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
         prev_kb = InlineKeyboardButton("⬅ Back",
                                        callback_data=f"add_item_category_prevp:{remover - count_page}")
-        keyboard.add(prev_kb, next_kb)
+        keyboard.add(prev_kb, nomer_kb, next_kb)
     return keyboard
 
 
@@ -405,14 +405,14 @@ def item_add_previous_page_category_ap(remover):
         nomer_kb = InlineKeyboardButton("🔸 1 🔸", callback_data="...")
         next_kb = InlineKeyboardButton("➡ Next",
                                        callback_data=f"add_item_category_nextp:{remover + count_page}")
-        keyboard.add(next_kb)
+        keyboard.add(nomer_kb,next_kb)
     else:
         next_kb = InlineKeyboardButton("➡ Next",
                                        callback_data=f"add_item_category_nextp:{remover + count_page}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
         prev_kb = InlineKeyboardButton("⬅ Back",
                                        callback_data=f"add_item_category_prevp:{remover - count_page}")
-        keyboard.add(prev_kb, next_kb)
+        keyboard.add(prev_kb, nomer_kb, next_kb)
     return keyboard
 
 
@@ -434,19 +434,19 @@ def position_add_item_position_ap(remover, category_id):
         nomer_kb = InlineKeyboardButton("🔸 1 🔸", callback_data="...")
         next_kb = InlineKeyboardButton("➡ Next",
                                        callback_data=f"add_item_position_nextp:{remover + count_page}:{category_id}")
-        keyboard.add(next_kb)
+        keyboard.add(nomer_kb,next_kb)
     elif remover + count_page >= len(get_positions):
         prev_kb = InlineKeyboardButton("⬅ Back",
                                        callback_data=f"add_item_position_prevp:{remover - count_page}:{category_id}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
-        keyboard.add(prev_kb)
+        keyboard.add(prev_kb, nomer_kb)
     else:
         next_kb = InlineKeyboardButton("➡ Next",
                                        callback_data=f"add_item_position_nextp:{remover + count_page}:{category_id}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
         prev_kb = InlineKeyboardButton("⬅ Back",
                                        callback_data=f"add_item_position_prevp:{remover - count_page}:{category_id}")
-        keyboard.add(prev_kb, next_kb)
+        keyboard.add(prev_kb, nomer_kb, next_kb)
     return keyboard
 
 
@@ -465,14 +465,14 @@ def position_edit_next_page_position_ap(remover, category_id):
         prev_kb = InlineKeyboardButton("⬅ Back",
                                        callback_data=f"add_item_position_prevp:{remover - count_page}:{category_id}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
-        keyboard.add(prev_kb)
+        keyboard.add(prev_kb, nomer_kb)
     else:
         next_kb = InlineKeyboardButton("➡ Next",
                                        callback_data=f"add_item_position_nextp:{remover + count_page}:{category_id}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
         prev_kb = InlineKeyboardButton("⬅ Back",
                                        callback_data=f"add_item_position_prevp:{remover - count_page}:{category_id}")
-        keyboard.add(prev_kb, next_kb)
+        keyboard.add(prev_kb, nomer_kb, next_kb)
     return keyboard
 
 
@@ -491,14 +491,14 @@ def position_edit_previous_page_position_ap(remover, category_id):
         nomer_kb = InlineKeyboardButton("🔸 1 🔸", callback_data="...")
         next_kb = InlineKeyboardButton("➡ Next",
                                        callback_data=f"add_item_position_nextp:{remover + count_page}:{category_id}")
-        keyboard.add(next_kb)
+        keyboard.add(nomer_kb,next_kb)
     else:
         next_kb = InlineKeyboardButton("➡ Next",
                                        callback_data=f"add_item_position_nextp:{remover + count_page}:{category_id}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
         prev_kb = InlineKeyboardButton("⬅ Back",
                                        callback_data=f"add_item_position_prevp:{remover - count_page}:{category_id}")
-        keyboard.add(prev_kb, next_kb)
+        keyboard.add(prev_kb, nomer_kb, next_kb)
     return keyboard
 
 
@@ -509,9 +509,15 @@ def buy_item_open_podcategory_ap(remover, tpes):
     x = 0
     keyboard = InlineKeyboardMarkup()
     get_podcategories = get_all_podcategoriesxs(tpes)
+    i=0
     for a in range(remover, len(get_podcategories)):
-        keyboard.add(InlineKeyboardButton(f"{get_podcategories[a][2]}",
-                                            callback_data=f"buy_open_podcategory:{get_podcategories[a][1]}"))
+        if i%2==0:
+            keyboard.add(InlineKeyboardButton(f"{get_podcategories[a][2]}",
+                                                callback_data=f"buy_open_podcategory:{get_podcategories[a][1]}"))
+        else:
+            keyboard.insert(InlineKeyboardButton(f"{get_podcategories[a][2]}",
+                                                callback_data=f"buy_open_podcategory:{get_podcategories[a][1]}"))
+        i+=1
     return keyboard
 
 def buy_item_open_category_ap(remover):
@@ -523,25 +529,25 @@ def buy_item_open_category_ap(remover):
             keyboard.add(InlineKeyboardButton(f"{get_categories[a][2]}",
                                               callback_data=f"buy_open_category:{get_categories[a][1]}"))
         x += 1
-    if len(get_categories) <= 10:
+    if len(get_categories) <= 5:
         pass
-    elif len(get_categories) > count_page and remover < 10:
+    elif len(get_categories) > count_page and remover < 5:
         nomer_kb = InlineKeyboardButton("🔸 1 🔸", callback_data="...")
         next_kb = InlineKeyboardButton("➡ Next",
                                        callback_data=f"buy_category_nextp:{remover + count_page}")
-        keyboard.add(next_kb)
+        keyboard.add(nomer_kb,next_kb)
     elif remover + count_page >= len(get_categories):
         prev_kb = InlineKeyboardButton("⬅ Back",
                                        callback_data=f"buy_category_prevp:{remover - count_page}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
-        keyboard.add(prev_kb)
+        keyboard.add(prev_kb, nomer_kb)
     else:
         next_kb = InlineKeyboardButton("➡ Next",
                                        callback_data=f"buy_category_nextp:{remover + count_page}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
         prev_kb = InlineKeyboardButton("⬅ Back",
                                        callback_data=f"buy_category_prevp:{remover - count_page}")
-        keyboard.add(prev_kb, next_kb)
+        keyboard.add(prev_kb, nomer_kb, next_kb)
     return keyboard
 
 
@@ -559,14 +565,14 @@ def buy_item_next_page_category_ap(remover):
         prev_kb = InlineKeyboardButton("⬅ Back",
                                        callback_data=f"buy_category_prevp:{remover - count_page}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
-        keyboard.add(prev_kb)
+        keyboard.add(prev_kb, nomer_kb)
     else:
         next_kb = InlineKeyboardButton("➡ Next",
                                        callback_data=f"buy_category_nextp:{remover + count_page}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
         prev_kb = InlineKeyboardButton("⬅ Back",
                                        callback_data=f"buy_category_prevp:{remover - count_page}")
-        keyboard.add(prev_kb, next_kb)
+        keyboard.add(prev_kb, nomer_kb, next_kb)
     return keyboard
 
 
@@ -584,14 +590,14 @@ def buy_item_previous_page_category_ap(remover):
         nomer_kb = InlineKeyboardButton("🔸 1 🔸", callback_data="...")
         next_kb = InlineKeyboardButton("➡ Next",
                                        callback_data=f"buy_category_nextp:{remover + count_page}")
-        keyboard.add(next_kb)
+        keyboard.add(nomer_kb,next_kb)
     else:
         next_kb = InlineKeyboardButton("➡ Next",
                                        callback_data=f"buy_category_nextp:{remover + count_page}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
         prev_kb = InlineKeyboardButton("⬅ Back",
                                        callback_data=f"buy_category_prevp:{remover - count_page}")
-        keyboard.add(prev_kb, next_kb)
+        keyboard.add(prev_kb, nomer_kb, next_kb)
     return keyboard
 
 
@@ -622,6 +628,8 @@ def buy_item_item_category_ap(remover, category_id):
 
 def buy_item_item_position_ap(remover, category_id):
     x = 0
+    main=InlineKeyboardButton("Main menu",
+                        callback_data=f"back_buy:{category_id}")
     keyboard = InlineKeyboardMarkup()
     get_positions = get_positionsx("*", category_id=category_id)
     for a in range(remover, len(get_positions)):
@@ -633,30 +641,31 @@ def buy_item_item_position_ap(remover, category_id):
     if len(get_positions) <= 5:
         pass
     elif len(get_positions) > count_page and remover < 5:
-
         nomer_kb = InlineKeyboardButton("🔸 1 🔸", callback_data="...")
         next_kb = InlineKeyboardButton("➡ Next",
                                        callback_data=f"buy_position_nextp:{remover + count_page}:{category_id}")
-        keyboard.add(next_kb)
+        keyboard.add(main, nomer_kb,next_kb)
     elif remover + count_page >= len(get_positions):
         prev_kb = InlineKeyboardButton("⬅ Back",
                                        callback_data=f"buy_position_prevp:{remover - count_page}:{category_id}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
-        keyboard.add(prev_kb)
+        keyboard.add(prev_kb, nomer_kb, main)
     else:
-
         next_kb = InlineKeyboardButton("➡ Next",
                                        callback_data=f"buy_position_nextp:{remover + count_page}:{category_id}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
         prev_kb = InlineKeyboardButton("⬅ Back",
                                        callback_data=f"buy_position_prevp:{remover - count_page}:{category_id}")
-        keyboard.add(prev_kb, next_kb)
+        keyboard.add(prev_kb, nomer_kb, next_kb)
+        keyboard.add(main)
     return keyboard
 
 
 # Следующая страница позиций для покупки товаров
 def item_buy_next_page_position_ap(remover, category_id):
     x = 0
+    main=InlineKeyboardButton("Main menu",
+                    callback_data=f"back_buy:{category_id}")
     keyboard = InlineKeyboardMarkup()
     get_positions = get_positionsx("*", category_id=category_id)
     for a in range(remover, len(get_positions)):
@@ -669,16 +678,15 @@ def item_buy_next_page_position_ap(remover, category_id):
         prev_kb = InlineKeyboardButton("⬅ Back",
                                        callback_data=f"buy_position_prevp:{remover - count_page}:{category_id}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
-        keyboard.add(prev_kb)
+        keyboard.add(prev_kb, nomer_kb, main)
     else:
         next_kb = InlineKeyboardButton("➡ Next",
                                        callback_data=f"buy_position_nextp:{remover + count_page}:{category_id}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
         prev_kb = InlineKeyboardButton("⬅ Back",
                                        callback_data=f"buy_position_prevp:{remover - count_page}:{category_id}")
-        keyboard.add(prev_kb, next_kb)
-    keyboard.add(InlineKeyboardButton("⬅ Главная",
-                                      callback_data=f"back_buy_item_to_category"))
+        keyboard.add(prev_kb, nomer_kb, next_kb)
+        keyboard.add(main)
     return keyboard
 
 
@@ -686,6 +694,8 @@ def item_buy_next_page_position_ap(remover, category_id):
 def item_buy_previous_page_position_ap(remover, category_id):
     x = 0
     keyboard = InlineKeyboardMarkup()
+    main=InlineKeyboardButton("Main menu",
+                callback_data=f"back_buy:{category_id}")
     get_positions = get_positionsx("*", category_id=category_id)
     for a in range(remover, len(get_positions)):
         if x < count_page:
@@ -697,14 +707,13 @@ def item_buy_previous_page_position_ap(remover, category_id):
         nomer_kb = InlineKeyboardButton(f"🔸 1 🔸", callback_data="...")
         next_kb = InlineKeyboardButton("➡ Next",
                                        callback_data=f"buy_position_nextp:{remover + count_page}:{category_id}")
-        keyboard.add(next_kb)
+        keyboard.add(main,nomer_kb,next_kb)
     else:
         next_kb = InlineKeyboardButton("➡ Next",
                                        callback_data=f"buy_position_nextp:{remover + count_page}:{category_id}")
         nomer_kb = InlineKeyboardButton(f"🔸 {str((remover + count_page)//5)} 🔸", callback_data="...")
         prev_kb = InlineKeyboardButton("⬅ Back",
                                        callback_data=f"buy_position_prevp:{remover - count_page}:{category_id}")
-        keyboard.add(prev_kb, next_kb)
-    keyboard.add(InlineKeyboardButton("⬅ Главная",
-                                      callback_data=f"back_buy_item_to_category"))
+        keyboard.add(prev_kb, nomer_kb, next_kb)
+        keyboard.add(main)
     return keyboard
