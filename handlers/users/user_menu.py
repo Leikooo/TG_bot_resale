@@ -38,7 +38,7 @@ async def show_search(message: types.Message, state: FSMContext):
         await message.answer("<b>Select platform:</b>",
                                     reply_markup=get_kb)
     else:
-        await message.answer(f"❕ Items in the tab missing.")
+        await message.answer(f"❗️Items in the tab missing.")
 
 @dp.message_handler(text=["⚔️ Games"], state="*")
 async def show_search(message: types.Message, state: FSMContext):
@@ -49,7 +49,7 @@ async def show_search(message: types.Message, state: FSMContext):
         await message.answer("<b>Select platform:</b>",
                                     reply_markup=get_kb)
     else:
-        await message.answer(f"❕ Items in the tab missing.")
+        await message.answer(f"❗️Items in the tab missing.")
 
 @dp.callback_query_handler(text_startswith="buy_open_podcategory", state="*")
 async def open_category_for_buy_item(call: CallbackQuery, state: FSMContext):
@@ -61,7 +61,7 @@ async def open_category_for_buy_item(call: CallbackQuery, state: FSMContext):
         await call.message.edit_text("<b>Сhoose receiving method:</b>",
                                     reply_markup=get_kb)
     else:
-        await call.answer(f"❕ Items in the tab missing.")
+        await call.answer(f"❗️Items in the tab missing.")
 
 @dp.callback_query_handler(text="pokupki", state="*")
 async def show_referral(call: CallbackQuery, state: FSMContext):

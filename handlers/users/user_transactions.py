@@ -73,7 +73,7 @@ async def choice_trz(call: CallbackQuery, state: FSMContext):
         return
     await StoragePay.here_input_suma.set()
     await state.update_data(here_input_curr=call.data[11:])
-    await call.message.answer(f"<b>💵 Enter the amount to top up the funds 💵</b>\nMinimum Top Up Amount - <code>{min_cash}$</code>")
+    await call.message.answer(f"<b>💵 Enter deposit amount 💵</b>\nMinimum Top Up Amount - <code>{min_cash}$</code>")
 
 @dp.message_handler(state=StoragePay.here_input_suma)
 async def input_buy_count_item(message: types.Message, state: FSMContext):
